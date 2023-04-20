@@ -1,0 +1,262 @@
+/*-- scss:defaults --*/
+// $theme: "urbn" !default;
+
+// importing fonts
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Lato:bold,italic,bolditalic&family=Yanone+Kaffeesatz&display=swap');
+
+// Color system
+
+$white:    #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black:    #000 !default;
+
+$cyan:       #1696d2 !default;
+$gray:       #d2d2d2 !default;
+$yellow:     #fdbf11 !default;
+$magenta:    #ec008b !default;
+$space-gray: #5c5859 !default;
+$green:      #55b748 !default;
+$red:        #db2b27 !default;
+
+$gray-edp-100: #f2f2f2 !default; 
+$gray-edp-200: #dee2e6; 
+$gray-edp-300: #cfcfcf; 
+$gray-edp-400: #4a4a4a !default; 
+$cyan-edp:     #008bb0 !default; 
+
+$primary:       $cyan-edp !default;
+$secondary:     $gray-200 !default;
+$success:       $green !default;
+$info:          $cyan-edp !default;
+$warning:       $yellow !default;
+$danger:        $red !default;
+$light:         $gray-100 !default;
+$dark:          $gray-800 !default;
+
+$min-contrast-ratio:   2.75 !default;
+
+// Body
+
+$body-color:    $gray-edp-400 !default;
+
+// Fonts
+
+$font-family-sans-serif: 'Lato', Tahoma, sans-serif !default;
+$headings-color:         $gray-edp-400 !default;
+
+$font-size-base:          15px !default;
+$font-size-large:         ceil(($font-size-base * 1.25)) !default; 
+$font-size-small:         ceil(($font-size-base * .85)) !default; 
+$font-size-h1:            floor(($font-size-base * 2.6)) !default; 
+$font-size-h2:            floor(($font-size-base * 2.15)) !default; 
+$font-size-h3:            ceil(($font-size-base * 1.7)) !default; 
+$font-size-h4:            ceil(($font-size-base * 1.25)) !default; 
+$font-size-h5:            $font-size-base !default;
+$font-size-h6:            ceil(($font-size-base * .85)) !default; 
+$toc-font-size:			      ceil(($font-size-base * .95)) !default; 
+$nav-link-height:         $font-size-base !default;
+
+// Dropdowns
+
+$dropdown-link-color:           $body-color !default;
+$dropdown-link-hover-color:     $white !default;
+$dropdown-link-hover-bg:        $primary !default;
+
+// Navbar
+
+$navbar-dark-color:             rgba($white, .8) !default;
+$navbar-dark-hover-color:       $white !default;
+
+// Callouts
+
+$callout-color-note: $cyan-edp;
+$callout-color-warning: $yellow;
+$callout-color-important: $red;
+$callout-color-tip: $green;
+
+/*-- scss:rules --*/
+
+// Variables
+
+$text-shadow: 0 1px 0 rgba(0, 0, 0, .05) !default;
+
+// Mixins
+
+@mixin btn-shadow($color){
+  @include gradient-y-three-colors(tint-color($color, 16%), $color, 60%, shade-color($color, 6%));
+}
+
+// Navbar
+
+.navbar {
+  @each $color, $value in $theme-colors {
+    &.bg-#{$color} {
+      @include btn-shadow($value);
+    }
+  }
+}
+
+.navbar-brand,
+.nav-link {
+  text-shadow: $text-shadow;
+}
+
+// Buttons
+
+.btn {
+  text-shadow: $text-shadow;
+}
+
+.btn-secondary {
+  color: $gray-700;
+}
+
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    @include btn-shadow($value);
+  }
+}
+
+// Typography
+
+.text-secondary {
+  color: $gray-500 !important;
+}
+
+.bg-primary,
+.bg-success,
+.bg-info,
+.bg-warning,
+.bg-danger,
+.bg-dark {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: $white;
+  }
+}
+
+// Navs
+
+.dropdown-menu {
+  .dropdown-header {
+    color: $gray-600;
+  }
+}
+
+// Indicators
+
+.badge {
+  &.bg-secondary,
+  &.bg-light {
+    color: $dark;
+  }
+}
+
+// TOC 
+
+.sidebar nav[role="doc-toc"] ul > li > a {
+    background-color: $gray-edp-100;
+    font-weight: bold;
+	font-family: var(--bs-body-font-family);
+    font-weight: var(--bs-body-font-weight);
+	padding-bottom: 0.7rem
+}
+
+.sidebar nav[role=doc-toc] ul > li > a.active {
+	border-left: 4px solid $cyan-edp;
+}
+
+.sidebar {
+    background-color: $gray-edp-100;
+    font-weight: bold;
+	font-family: var(--bs-body-font-family);
+    font-weight: var(--bs-body-font-weight);
+}
+
+// Code 
+
+.nav-tabs .nav-link.active {
+	background: $gray-edp-100; 
+	font-family: var(--bs-body-font-family);
+}
+
+.nav-tabs {
+	background: $gray-edp-300;
+	border-bottom: 0px solid $gray-edp-200
+
+}
+
+.nav-tabs .nav-link {
+	border-radius: 0\rem;
+	color: $gray-edp-400; 
+	border: 0px solid transparent;
+	margin-top: 7px;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.code {
+	padding: 1rem 1rem; 
+	border-radius: 0\rem;
+}
+
+.tab-content {
+	padding: 0em;
+	margin-bottom: 0em;
+	border: 0px solid $gray-edp-200; 
+}
+
+pre.sourceCode {
+	padding: 1em;
+	border-radius: 0rem;
+	background-color: $gray-edp-100;
+}
+
+div.sourceCode {
+	border-radius: 0rem;
+	border: 0px solid $gray-edp-200; 
+}
+
+.sourceCode {
+	background-color: $gray-edp-100;
+}
+
+code { 
+	color: $cyan-edp
+}
+
+.navbar-dark {
+  background-color: #000;
+}
+
+.navbar {
+  height: 75px;
+  padding: 15px 15px 15px 15px 
+}
+
+.navbar-title {
+  padding-left: 20px;
+  font-weight: 550; 
+  font-size: 20px; 
+  text-transform: uppercase;
+  white-space: pre-wrap;
+}
+
+.navbar-logo {
+  max-height: 100px; 
+  max-width: 100px; 
+  border-right: 1px solid #ffffff; 
+  padding-right: 20px
+}

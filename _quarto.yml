@@ -1,0 +1,21 @@
+project:
+  type: website
+
+website:
+  title: Education Data Portal – API FAQs
+  search: false      
+  navbar: 
+    logo: img/logo.png
+    pinned: true 
+
+format:
+  html:
+    toc: true
+    toc-depth: 4
+    toc-title: ' ' 
+    theme: www/edp-faq.scss
+    grid:
+      margin-width: 290px
+
+
+
